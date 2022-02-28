@@ -1,0 +1,58 @@
+{
+  "titles": {
+    "discover": "Atrask",
+    "about_place": "Apie vietovę",
+    "contacts": "Kontaktai",
+    "visiting_hours": "Lankymo valandos",
+    "address": "Adresas",
+    "languages": "Kalbos",
+    "notifications": "Pranešimai",
+    "contact_us": "Susisiekite",
+    "name": "Vardas",
+    "email_address": "El. paštas",
+    "subject": "Tema",
+    "message": "Žinutė",
+    "about_project": "Apie projektą",
+    "map": "Žemėlapis",
+    "settings": "Nustatymai",
+    "push_notifications": "Pranešimai",
+    "success": "Sėkmingai atlikta",
+    "usage_policy": "Naudojimosi politika"
+  },
+  "buttons": {
+    "back": "Atgal",
+    "update_settings": "Atnaujinti nustatymus",
+    "read_more": "Skaityti daugiau",
+    "read_less": "Skaityti mažiau",
+    "send": "Siųsti"
+  },
+  "phrases": {
+    "contacts_agreement": "Sutinku, kad mano pateikta informacija gali būti naudojama ir renkama būsimos komunikacijos ir rinkodaros tikslais",
+    "contacts_help": "Užpildykite žemiau esančią formą ir mes su jumis susisieksime artimiausiu metu",
+    "no_notifications_title": "Pranešimų dar nėra",
+    "no_notifications_description": "Kai gausite pranešimus, jie bus rodomi čia.",
+    "push_notifications_description": "Gaukite pranešimus apie naujas vietas ir kitą svarbią informaciją",
+    "message_successfully_send": "Žinutė sėkmingai išsiųsta",
+    "settings_successfully_updated": "Nustatymai sėkmingai atnaujinti"
+  },
+  "validations": {
+    "field_is_required": "Laukas yra privalomas",
+    "field_is_invalid": "Laukas yra nevalidus",
+    "email_is_invalid": "El. paštas yra nevalidus",
+    "field_must_be_selected": "Laukas privalo būti pažymėtas"
+  },
+  "gdpr": {
+    "data_collected_parties": "Trečiųjų šalių renkami duomenys:",
+    "one_signal": "1) „OneSignal“ – naudojamas nuotoliniam programos „Push Notifications“ programavimui. Daugiau apie jų privatumo politiką –",
+    "device_permissions": "Programoje naudojami įrenginio leidimai:",
+    "internet": "1) „INTERNETAS“ – prieigai prie interneto, nes programa gali veikti tik įrenginyje su aktyviu interneto ryšiu.",
+    "network_state": "2) „ACCESS_NETWORK_STATE“ – patikrinti, ar dabartinis įrenginys turi aktyvų interneto ryšį.",
+    "external_storage": "3) „WRITE_EXTERNAL_STORAGE“ – įrenginio saugyklai, kuri reikalinga norint išsaugoti laikinus duomenis, kad būtų galima identifikuoti prisijungusį vartotoją veikiančioje programoje.",
+    "message": "4) „C2D_MESSAGE“ – gauti įrenginio ID nuotoliniam „Push Notifications“.",
+    "internet_ios": "\n1) „NSAppTransportSecurity“ – prieigai prie interneto, nes programa gali veikti tik įrenginyje su aktyviu interneto ryšiu.",
+    "network_state_ios": "\n2) „NSLocationWhenInUseUsageDescription“ – gauti esamą vartotojo vietą ir parodyti ją žemėlapyje.",
+    "message_ios": "3) „UIBackgroundModes“ – gauti įrenginio ID nuotoliniams „Push Notifications“.",
+    "disclaimer": "Deja, jei nesutinkate su anksčiau aprašyta programos naudojimo politika, negalėsite toliau jos naudoti, nes ši politika apibūdina funkcijas, kurios naudojamos sklandžiam programos veikimui. Norėdami gauti mūsų paraiškų sistemos surinktus duomenis, prašymus juos pašalinti ar bet kokius kitus klausimus laukiame el. paštu"
+  }
+}
+

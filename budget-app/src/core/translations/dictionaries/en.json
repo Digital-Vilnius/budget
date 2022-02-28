@@ -1,0 +1,58 @@
+{
+  "titles": {
+    "discover": "Discover",
+    "about_place": "About place",
+    "contacts": "Contacts",
+    "visiting_hours": "Visiting hours",
+    "address": "Address",
+    "languages": "Languages",
+    "notifications": "Notifications",
+    "contact_us": "Contact us",
+    "name": "Name",
+    "email_address": "Email address",
+    "subject": "Subject",
+    "message": "Message",
+    "about_project": "About project",
+    "map": "Map",
+    "settings": "Settings",
+    "push_notifications": "Push-notification",
+    "success": "Success",
+    "usage_policy": "Usage policy"
+  },
+  "buttons": {
+    "back": "Back",
+    "update_settings": "Update settings",
+    "read_more": "Read more",
+    "read_less": "Read less",
+    "send": "Send"
+  },
+  "phrases": {
+    "contacts_agreement": "I agree that my filed information can be used and collected for future communication and marketing purposes",
+    "contacts_help": "Please fill out the form below and we will contact you shortly",
+    "no_notifications_title": "No notifications yet",
+    "no_notifications_description": "When you get notifications, they’ll show up here.",
+    "push_notifications_description": "Get notifications about new places ant other relevant information",
+    "message_successfully_send": "Message successfully send",
+    "settings_successfully_updated": "Settings successfully updated"
+  },
+  "validations": {
+    "field_is_required": "Field is required",
+    "field_is_invalid": "Field is invalid",
+    "email_is_invalid": "Email is invalid",
+    "field_must_be_selected": "Field must be selected"
+  },
+  "gdpr": {
+    "data_collected_parties": "Data collected by third parties:",
+    "one_signal": "1) \"OneSignal\" – used for application remote \"Push Notifications\". More on their privacy policy – ",
+    "device_permissions": "Device permissions that are used in application:",
+    "internet": "1) \"INTERNET\" – for internet access since application can only run on device with active internet connection.",
+    "network_state": "2) \"ACCESS_NETWORK_STATE\" – to check if current device has active internet connection.",
+    "external_storage": "3) \"WRITE_EXTERNAL_STORAGE\" –  for device storage which is needed to save temporary data to identify logged user in running application.",
+    "message": "4) \"C2D_MESSAGE\" – to get device ID for remote \"Push Notifications\".",
+    "internet_ios": "1) \"NSAppTransportSecurity\" – for internet access since application can only run on device with active internet connection.",
+    "network_state_ios": "2) \"NSLocationWhenInUseUsageDescription\" – to get current user location and show it on the map.",
+    "message_ios": "3) \"UIBackgroundModes\" – to get device ID for remote \"Push Notifications\".",
+    "disclaimer": "Unfortunately if you don't agree on application usage policy described above then you are not able to proceed using it because this policy describes features that are used for smooth operation of the application. To get our application system collected data, request for removing it or any other questions are welcome on email"
+  }
+}
+
