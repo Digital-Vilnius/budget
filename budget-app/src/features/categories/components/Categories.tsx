@@ -1,23 +1,23 @@
 import React, { FC } from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 import { ListSeparator } from '@components';
-import AccountsListItem from './AccountsListItem';
-import { Account } from '../types';
+import CategoriesListItem from './CategoriesListItem';
+import { Category } from '../types';
 
 interface Props {
   isRefreshing: boolean;
   onRefresh: () => void;
-  data: Account[];
+  data: Category[];
   onEndReached: () => void;
-  onItemPress: (account: Account) => void;
+  onItemPress: (category: Category) => void;
 }
 
-const Accounts: FC<Props> = (props) => {
+const Categories: FC<Props> = (props) => {
   const { isRefreshing, onRefresh, data, onEndReached, onItemPress } = props;
 
-  const renderItem = (item: ListRenderItemInfo<Account>) => {
-    const account = item.item;
-    return <AccountsListItem onPress={() => onItemPress(account)} account={account} />;
+  const renderItem = (item: ListRenderItemInfo<Category>) => {
+    const category = item.item;
+    return <CategoriesListItem onPress={() => onItemPress(category)} category={category} />;
   };
 
   return (
@@ -33,4 +33,4 @@ const Accounts: FC<Props> = (props) => {
   );
 };
 
-export default Accounts;
+export default Categories;

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { Categories } from '../hoc';
 
 const CategoriesScreen: FC = () => {
-  return <View />;
+  return <Categories />;
 };
 
 export default CategoriesScreen;

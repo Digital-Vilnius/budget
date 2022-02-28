@@ -3,7 +3,6 @@ export interface LoginFormData {
 }
 
 export interface RegisterFormData {
-  accountName: string;
   firstName: string;
   lastName: string;
   phone: string;

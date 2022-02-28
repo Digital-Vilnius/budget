@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { useAppSelector } from '@core/store';
 import { authNavigator, mainNavigator } from './types';
 import MainNavigator from './MainNavigator';
 import AuthNavigator from './AuthNavigator';
@@ -17,13 +18,13 @@ const screenOptions: StackNavigationOptions = {
 };
 
 const RootNavigator: FC = () => {
-  const isLoggedIn = false;
+  const isLogged = useAppSelector((state) => state.auth.isLogged);
 
   return (
     <NavigationContainer>
-      <RootStack.Navigator screenOptions={screenOptions}>
-        {!isLoggedIn && <RootStack.Screen name={authNavigator} component={AuthNavigator} />}
-        {isLoggedIn && <RootStack.Screen name={mainNavigator} component={MainNavigator} />}
+      <RootStack.Navigator initialRouteName={authNavigator} screenOptions={screenOptions}>
+        {!isLogged && <RootStack.Screen name={authNavigator} component={AuthNavigator} />}
+        {isLogged && <RootStack.Screen name={mainNavigator} component={MainNavigator} />}
       </RootStack.Navigator>
     </NavigationContainer>
   );

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { RegistrationForm } from '../hoc';
 
 const RegistrationScreen: FC = () => {
-  return <View />;
+  return <RegistrationForm />;
 };
 
 export default RegistrationScreen;

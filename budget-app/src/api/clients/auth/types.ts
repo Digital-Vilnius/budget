@@ -3,7 +3,6 @@ export interface LoginRequest {
 }
 
 export interface RegisterRequest {
-  accountName: string;
   firstName: string;
   lastName: string;
   phone: string;
@@ -12,6 +11,10 @@ export interface RegisterRequest {
 export interface ConfirmCodeRequest {
   phone: string;
   code: string;
+}
+
+export interface RefreshToken {
+  refreshToken: string;
 }
 
 export interface Tokens {

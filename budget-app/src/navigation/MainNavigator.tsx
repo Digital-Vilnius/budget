@@ -3,16 +3,16 @@ import { createStackNavigator, StackNavigationOptions } from '@react-navigation/
 import { CategoryFormScreen, CategoryScreen } from '@features/categories/screens';
 import { TransactionFormScreen, TransactionScreen } from '@features/transactions/screens';
 import { UserFormScreen, UserScreen } from '@features/users/screens';
+import DrawerNavigator from '@navigation/DrawerNavigator';
 import {
   categoryFormRoute,
   categoryRoute,
-  tabsNavigator,
+  drawerNavigator,
   transactionFormRoute,
   transactionRoute,
   userFormRoute,
   userRoute,
 } from './types';
-import TabsNavigator from './TabsNavigator';
 
 export type MainStackParamList = {
   [categoryRoute]: { id: number };
@@ -21,7 +21,7 @@ export type MainStackParamList = {
   [transactionFormRoute]: { id?: number };
   [userRoute]: { id: number };
   [userFormRoute]: { id?: number };
-  [tabsNavigator]: undefined;
+  [drawerNavigator]: undefined;
 };
 
 const MainStack = createStackNavigator<MainStackParamList>();
@@ -32,8 +32,8 @@ const screenOptions: StackNavigationOptions = {
 
 const MainNavigator: FC = () => {
   return (
-    <MainStack.Navigator screenOptions={screenOptions}>
-      <MainStack.Screen name={tabsNavigator} component={TabsNavigator} />
+    <MainStack.Navigator initialRouteName={drawerNavigator} screenOptions={screenOptions}>
+      <MainStack.Screen name={drawerNavigator} component={DrawerNavigator} />
       <MainStack.Screen name={categoryRoute} component={CategoryScreen} />
       <MainStack.Screen name={categoryFormRoute} component={CategoryFormScreen} />
       <MainStack.Screen name={transactionRoute} component={TransactionScreen} />

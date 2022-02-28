@@ -4,6 +4,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAppDispatch, useAppSelector } from '@core/store';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { AuthStackParamList } from '@navigation/AuthNavigator';
+import { codeConfirmationRoute } from '@navigation/types';
 
 const getSchema = () => {
   const schema = yup.object().shape({
@@ -20,14 +24,16 @@ const initialFormData: LoginFormData = {
 const useLoginForm = () => {
   const { isLoading } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const navigation = useNavigation<StackNavigationProp<AuthStackParamList>>();
 
   const { control, handleSubmit } = useForm<LoginFormData>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema()),
   });
 
-  const login = (request: LoginFormData) => {
-    return dispatch(loginAction(request)).unwrap();
+  const login = async (request: LoginFormData) => {
+    await dispatch(loginAction(request)).unwrap();
+    navigation.navigate(codeConfirmationRoute, { phone: request.phone });
   };
 
   return { login, isLoading, control, handleSubmit };

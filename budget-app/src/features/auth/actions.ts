@@ -1,5 +1,11 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { ConfirmCodeRequest, LoginRequest, RegisterRequest, Tokens } from '@api/clients/auth/types';
+import {
+  ConfirmCodeRequest,
+  LoginRequest,
+  RefreshToken,
+  RegisterRequest,
+  Tokens,
+} from '@api/clients/auth/types';
 import { AuthClient } from '@api/clients';
 
 export const loginAction = createAsyncThunk<void, LoginRequest>(
@@ -9,9 +15,9 @@ export const loginAction = createAsyncThunk<void, LoginRequest>(
   }
 );
 
-export const refreshTokenAction = createAsyncThunk<Tokens, Tokens>(
+export const refreshTokenAction = createAsyncThunk<Tokens, RefreshToken>(
   'refreshToken',
-  async (request: Tokens) => {
+  async (request: RefreshToken) => {
     const response = await AuthClient.refreshToken(request);
     return response.result;
   }

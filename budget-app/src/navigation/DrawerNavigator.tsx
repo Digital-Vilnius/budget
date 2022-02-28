@@ -14,7 +14,7 @@ const screenOptions: DrawerNavigationOptions = {
 
 const TabsNavigator: FC = () => {
   return (
-    <Drawer.Navigator screenOptions={screenOptions}>
+    <Drawer.Navigator initialRouteName={tabsNavigator} screenOptions={screenOptions}>
       <Drawer.Screen name={tabsNavigator} component={TabsNavigator} />
     </Drawer.Navigator>
   );

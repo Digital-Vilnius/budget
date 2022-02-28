@@ -35,7 +35,7 @@ const screenOptions: BottomTabNavigationOptions = {
 
 const TabsNavigator: FC = () => {
   return (
-    <Tabs.Navigator screenOptions={screenOptions}>
+    <Tabs.Navigator initialRouteName={dashboardRoute} screenOptions={screenOptions}>
       <Tabs.Screen name={dashboardRoute} component={DashboardScreen} />
       <Tabs.Screen name={transactionsRoute} component={TransactionsScreen} />
       <Tabs.Screen name={categoriesRoute} component={CategoriesScreen} />

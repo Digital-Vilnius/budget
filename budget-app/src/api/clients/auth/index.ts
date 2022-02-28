@@ -1,6 +1,6 @@
 import { ResultResponse } from '@api/types';
 import httpClient from '@api/httpClient';
-import { ConfirmCodeRequest, LoginRequest, RegisterRequest, Tokens } from './types';
+import { ConfirmCodeRequest, LoginRequest, RefreshToken, RegisterRequest, Tokens } from './types';
 
 const baseUrl = '/auth';
 
@@ -14,9 +14,9 @@ export const register = async (request: RegisterRequest) => {
   return httpClient.post<RegisterRequest, void>(url, request);
 };
 
-export const refreshToken = async (request: Tokens) => {
+export const refreshToken = async (request: RefreshToken) => {
   const url = `${baseUrl}/refresh-token`;
-  return httpClient.post<Tokens, ResultResponse<Tokens>>(url, request);
+  return httpClient.post<RefreshToken, ResultResponse<Tokens>>(url, request);
 };
 
 export const confirmCode = async (request: ConfirmCodeRequest) => {

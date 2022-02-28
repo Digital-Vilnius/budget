@@ -24,17 +24,13 @@ export const colors = {
 };
 
 export const sizes = {
-  xxxs: 2,
-  xxs1: 5,
-  xxs: 8,
-  xs: 10,
-  s: 12,
-  m: 15,
-  l: 20,
-  xl: 25,
-  xl1: 30,
-  xxl: 35,
-  xxxl: 50,
+  xxs: 2,
+  xs: 4,
+  s: 8,
+  m: 12,
+  l: 16,
+  xl: 24,
+  xxl: 30,
 };
 
 export const borderRadius = {
@@ -62,6 +58,16 @@ export const spacings = {
   padding: sizes.m,
 };
 
+export const paddings = {
+  xxs: { padding: sizes.xxs },
+  xs: { padding: sizes.xs },
+  s: { padding: sizes.s },
+  m: { padding: sizes.m },
+  l: { padding: sizes.l },
+  xl: { padding: sizes.xl },
+  xxl: { padding: sizes.xxl },
+};
+
 export const bottomSpacings = {
   xxs: { marginBottom: sizes.xxs },
   xs: { marginBottom: sizes.xs },
@@ -69,7 +75,7 @@ export const bottomSpacings = {
   m: { marginBottom: sizes.m },
   l: { marginBottom: sizes.l },
   xl: { marginBottom: sizes.xl },
-  xl1: { marginBottom: sizes.xl1 },
+  xxl: { marginTop: sizes.xxl },
 };
 
 export const topSpacings = {
@@ -79,7 +85,7 @@ export const topSpacings = {
   m: { marginTop: sizes.m },
   l: { marginTop: sizes.l },
   xl: { marginTop: sizes.xl },
-  xl1: { marginTop: sizes.xl1 },
+  xxl: { marginTop: sizes.xxl },
 };
 
 export const fonts = {
