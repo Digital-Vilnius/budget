@@ -1,40 +1,12 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import {
-  ConfirmCodeRequest,
-  LoginRequest,
-  RefreshToken,
-  RegisterRequest,
-  Tokens,
-} from '@api/clients/auth/types';
+import { AuthResponse, RefreshTokenRequest } from '@api/clients/auth/types';
 import { AuthClient } from '@api/clients';
 
-export const loginAction = createAsyncThunk<void, LoginRequest>(
-  'login',
-  async (request: LoginRequest) => {
-    await AuthClient.login(request);
-  }
-);
-
-export const refreshTokenAction = createAsyncThunk<Tokens, RefreshToken>(
+export const refreshTokenAction = createAsyncThunk<AuthResponse, RefreshTokenRequest>(
   'refreshToken',
-  async (request: RefreshToken) => {
+  async (request: RefreshTokenRequest) => {
     const response = await AuthClient.refreshToken(request);
     return response.result;
-  }
-);
-
-export const confirmCodeAction = createAsyncThunk<Tokens, ConfirmCodeRequest>(
-  'confirmCode',
-  async (request: ConfirmCodeRequest) => {
-    const response = await AuthClient.confirmCode(request);
-    return response.result;
-  }
-);
-
-export const registerAction = createAsyncThunk<void, RegisterRequest>(
-  'register',
-  async (request: RegisterRequest) => {
-    await AuthClient.register(request);
   }
 );
 

@@ -45,7 +45,7 @@ namespace Budget.Services
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<ResultResponse<TokenResponse>> ConfirmCodeAsync(ConfirmCodeRequest request)
+        public async Task<ResultResponse<AuthResponse>> ConfirmCodeAsync(ConfirmCodeRequest request)
         {
             var user = await _userRepository.GetAsync(user => user.Phone == request.Phone);
             if (user == null) throw new Exception("User is not found");
@@ -57,11 +57,11 @@ namespace Budget.Services
             _userRepository.Update(user);
             await _unitOfWork.SaveChangesAsync();
             
-            var tokens = new TokenResponse { RefreshToken = user.RefreshToken, AccessToken = _tokenService.GenerateToken(user.Id) };
-            return new ResultResponse<TokenResponse>(tokens);
+            var tokens = new AuthResponse { RefreshToken = user.RefreshToken, AccessToken = _tokenService.GenerateToken(user.Id), UserId = user.Id };
+            return new ResultResponse<AuthResponse>(tokens);
         }
 
-        public async Task<ResultResponse<TokenResponse>> RefreshTokenAsync(RefreshTokenRequest request)
+        public async Task<ResultResponse<AuthResponse>> RefreshTokenAsync(RefreshTokenRequest request)
         {
             var user = await _userRepository.GetAsync(user => user.RefreshToken == request.RefreshToken);
             if (user == null) throw new Exception("User is not found");
@@ -70,8 +70,8 @@ namespace Budget.Services
             _userRepository.Update(user);
             await _unitOfWork.SaveChangesAsync();
             
-            var tokens = new TokenResponse { RefreshToken = user.RefreshToken, AccessToken = _tokenService.GenerateToken(user.Id) };
-            return new ResultResponse<TokenResponse>(tokens);
+            var tokens = new AuthResponse { RefreshToken = user.RefreshToken, AccessToken = _tokenService.GenerateToken(user.Id), UserId = user.Id };
+            return new ResultResponse<AuthResponse>(tokens);
         }
     }
 }

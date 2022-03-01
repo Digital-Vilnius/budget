@@ -70,9 +70,8 @@ namespace Budget.Services
         public async Task<ListResponse<TModel>> GetAsync<TModel>(ListAccountsRequest request)
         {
             var filter = _mapper.Map<ListAccountsRequest, AccountsFilter>(request);
-            var paging = _mapper.Map<ListAccountsRequest, Paging>(request);
 
-            var accounts = await _accountRepository.GetAsync(filter, paging);
+            var accounts = await _accountRepository.GetAsync(filter);
             var accountsCount = await _accountRepository.CountAsync(filter);
 
             var accountsDtosList = _mapper.Map<List<Account>, List<TModel>>(accounts);

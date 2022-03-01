@@ -2,11 +2,9 @@
 
 namespace Budget.Contracts.Account
 {
-    public class ListAccountsRequest : ListRequest
+    public class ListAccountsRequest
     {
         [Required]
         public int UserId { get; set; }
-        
-        public string? Keyword { get; set; }
     }
 }

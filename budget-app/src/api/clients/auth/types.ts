@@ -13,11 +13,12 @@ export interface ConfirmCodeRequest {
   code: string;
 }
 
-export interface RefreshToken {
+export interface RefreshTokenRequest {
   refreshToken: string;
 }
 
-export interface Tokens {
+export interface AuthResponse {
   accessToken: string;
   refreshToken: string;
+  userId: number;
 }

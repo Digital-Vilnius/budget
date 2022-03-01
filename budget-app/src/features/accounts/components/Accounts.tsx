@@ -8,12 +8,11 @@ interface Props {
   isRefreshing: boolean;
   onRefresh: () => void;
   data: Account[];
-  onEndReached: () => void;
   onItemPress: (account: Account) => void;
 }
 
 const Accounts: FC<Props> = (props) => {
-  const { isRefreshing, onRefresh, data, onEndReached, onItemPress } = props;
+  const { isRefreshing, onRefresh, data, onItemPress } = props;
 
   const renderItem = (item: ListRenderItemInfo<Account>) => {
     const account = item.item;
@@ -26,7 +25,6 @@ const Accounts: FC<Props> = (props) => {
       refreshing={isRefreshing}
       onRefresh={onRefresh}
       data={data}
-      onEndReached={onEndReached}
       keyExtractor={(item) => item.id.toString()}
       renderItem={renderItem}
     />

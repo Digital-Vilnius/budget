@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { createDrawerNavigator, DrawerNavigationOptions } from '@react-navigation/drawer';
 import { tabsNavigator } from './types';
+import TabsNavigator from './TabsNavigator';
+import { DrawerContent } from './components';
 
 export type DrawerParamList = {
   [tabsNavigator]: undefined;
@@ -9,15 +11,19 @@ export type DrawerParamList = {
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
 const screenOptions: DrawerNavigationOptions = {
-  headerShown: true,
+  headerShown: false,
 };
 
-const TabsNavigator: FC = () => {
+const DrawerNavigator: FC = () => {
   return (
-    <Drawer.Navigator initialRouteName={tabsNavigator} screenOptions={screenOptions}>
+    <Drawer.Navigator
+      initialRouteName={tabsNavigator}
+      drawerContent={DrawerContent}
+      screenOptions={screenOptions}
+    >
       <Drawer.Screen name={tabsNavigator} component={TabsNavigator} />
     </Drawer.Navigator>
   );
 };
 
-export default TabsNavigator;
+export default DrawerNavigator;

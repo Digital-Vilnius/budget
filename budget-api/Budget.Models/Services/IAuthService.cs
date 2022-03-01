@@ -8,7 +8,7 @@ namespace Budget.Models.Services
     {
         Task LoginAsync(LoginRequest request);
         Task RegisterAsync(RegisterRequest request);
-        Task<ResultResponse<TokenResponse>> ConfirmCodeAsync(ConfirmCodeRequest request);
-        Task<ResultResponse<TokenResponse>> RefreshTokenAsync(RefreshTokenRequest request);
+        Task<ResultResponse<AuthResponse>> ConfirmCodeAsync(ConfirmCodeRequest request);
+        Task<ResultResponse<AuthResponse>> RefreshTokenAsync(RefreshTokenRequest request);
     }
 }

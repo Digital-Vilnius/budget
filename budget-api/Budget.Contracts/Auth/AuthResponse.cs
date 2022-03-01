@@ -2,12 +2,15 @@
 
 namespace Budget.Contracts.Auth
 {
-    public class TokenResponse
+    public class AuthResponse
     {
         [Required]
         public string AccessToken { get; set; }
         
         [Required]
         public string RefreshToken { get; set; }
+        
+        [Required]
+        public int UserId { get; set; }
     }
 }

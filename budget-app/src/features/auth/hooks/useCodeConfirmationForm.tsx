@@ -1,20 +1,19 @@
 import { ConfirmCodeFormData } from '@features/auth/types';
-import { confirmCodeAction } from '@features/auth/actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useAppDispatch, useAppSelector } from '@core/store';
+import { useMutation } from 'react-query';
+import { AuthClient } from '@api/clients';
+import { useAppDispatch } from '@core/store';
+import { setAuth } from '@features/auth/slice';
 
 const getSchema = () => {
-  const schema = yup.object().shape({
-    code: yup.string().required(),
-  });
-
-  return schema.required();
-};
-
-const initialFormData: ConfirmCodeFormData = {
-  code: '',
+  return yup
+    .object()
+    .shape({
+      code: yup.string().required(),
+    })
+    .required();
 };
 
 interface Props {
@@ -23,19 +22,32 @@ interface Props {
 
 const useCodeConfirmationForm = (props: Props) => {
   const { phone } = props;
-  const { isLoading } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   const { control, handleSubmit } = useForm<ConfirmCodeFormData>({
-    defaultValues: initialFormData,
     resolver: yupResolver(getSchema()),
   });
 
-  const confirmCode = (request: ConfirmCodeFormData) => {
-    return dispatch(confirmCodeAction({ ...request, phone })).unwrap();
+  const mutationFn = (data: ConfirmCodeFormData) => {
+    return AuthClient.confirmCode({ ...data, phone });
   };
 
-  return { confirmCode, isLoading, control, handleSubmit };
+  const { mutateAsync, isLoading } = useMutation(mutationFn);
+
+  const confirmCode = async (data: ConfirmCodeFormData) => {
+    await mutateAsync(data, {
+      onSuccess: async (response) => {
+        await dispatch(setAuth(response.result));
+      },
+    });
+  };
+
+  return {
+    confirmCode,
+    isLoading,
+    control,
+    handleSubmit,
+  };
 };
 
 export default useCodeConfirmationForm;

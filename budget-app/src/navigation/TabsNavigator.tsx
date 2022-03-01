@@ -7,16 +7,15 @@ import { CategoriesScreen } from '@features/categories/screens';
 import { TransactionsScreen } from '@features/transactions/screens';
 import { SettingsScreen } from '@features/settings/screens';
 import { UsersScreen } from '@features/users/screens';
-import { ProfileScreen } from '@features/profile/screens';
 import { DashboardScreen } from '@features/dashboard/screens';
 import {
   categoriesRoute,
   dashboardRoute,
-  profileRoute,
   settingsRoute,
   transactionsRoute,
   usersRoute,
 } from './types';
+import { DrawerToggleButton } from './components';
 
 export type TabsParamList = {
   [dashboardRoute]: undefined;
@@ -24,13 +23,13 @@ export type TabsParamList = {
   [categoriesRoute]: undefined;
   [settingsRoute]: undefined;
   [usersRoute]: undefined;
-  [profileRoute]: undefined;
 };
 
 const Tabs = createBottomTabNavigator<TabsParamList>();
 
 const screenOptions: BottomTabNavigationOptions = {
   headerShown: true,
+  headerLeft: () => <DrawerToggleButton />,
 };
 
 const TabsNavigator: FC = () => {
@@ -41,7 +40,6 @@ const TabsNavigator: FC = () => {
       <Tabs.Screen name={categoriesRoute} component={CategoriesScreen} />
       <Tabs.Screen name={usersRoute} component={UsersScreen} />
       <Tabs.Screen name={settingsRoute} component={SettingsScreen} />
-      <Tabs.Screen name={profileRoute} component={ProfileScreen} />
     </Tabs.Navigator>
   );
 };

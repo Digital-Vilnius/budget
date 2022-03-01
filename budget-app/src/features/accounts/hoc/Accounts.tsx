@@ -1,22 +1,22 @@
 import React, { FC } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { MainStackParamList } from '@navigation/MainNavigator';
-import { drawerNavigator } from '@navigation/types';
 import { useAppDispatch } from '@core/store';
 import { setSelectedAccount } from '../slice';
 import { Accounts as ControlledAccount } from '../components';
 import { useAccounts } from '../hooks';
 import { Account } from '../types';
 
-const Accounts: FC = () => {
-  const { accounts, isLoading, loadMore, isRefetching, refetch } = useAccounts();
+interface Props {
+  onAccountSelect: () => void;
+}
+
+const Accounts: FC<Props> = (props) => {
+  const { onAccountSelect } = props;
+  const { accounts, isLoading, isRefetching, refetch } = useAccounts();
   const dispatch = useAppDispatch();
-  const navigation = useNavigation<StackNavigationProp<MainStackParamList>>();
 
   const handleItemPress = (account: Account) => {
     dispatch(setSelectedAccount({ account }));
-    navigation.navigate(drawerNavigator);
+    onAccountSelect();
   };
 
   return (
@@ -25,7 +25,6 @@ const Accounts: FC = () => {
       onRefresh={refetch}
       isRefreshing={isLoading || isRefetching}
       onItemPress={handleItemPress}
-      onEndReached={loadMore}
     />
   );
 };

@@ -4,11 +4,11 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { reducer as settingsReducer } from '@features/settings/slice';
-import { reducer as accountsReducer } from '@features/accounts/slice';
 import { reducer as categoriesReducer } from '@features/categories/slice';
 import { reducer as transactionsReducer } from '@features/transactions/slice';
 import { reducer as usersReducer } from '@features/users/slice';
 import { reducer as authReducer } from '@features/auth/slice';
+import { reducer as accountsReducer } from '@features/accounts/slice';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist/es/constants';
 
 const persistConfig = {
@@ -18,11 +18,11 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   settings: settingsReducer,
-  accounts: accountsReducer,
   categories: categoriesReducer,
   transactions: transactionsReducer,
   users: usersReducer,
   auth: authReducer,
+  accounts: accountsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

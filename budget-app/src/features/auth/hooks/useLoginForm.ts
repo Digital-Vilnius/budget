@@ -1,42 +1,44 @@
 import { LoginFormData } from '@features/auth/types';
-import { loginAction } from '@features/auth/actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useAppDispatch, useAppSelector } from '@core/store';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AuthStackParamList } from '@navigation/AuthNavigator';
 import { codeConfirmationRoute } from '@navigation/types';
+import { useMutation } from 'react-query';
+import { AuthClient } from '@api/clients';
 
 const getSchema = () => {
-  const schema = yup.object().shape({
-    phone: yup.string().required(),
-  });
-
-  return schema.required();
-};
-
-const initialFormData: LoginFormData = {
-  phone: '',
+  return yup
+    .object()
+    .shape({
+      phone: yup.string().required(),
+    })
+    .required();
 };
 
 const useLoginForm = () => {
-  const { isLoading } = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch();
   const navigation = useNavigation<StackNavigationProp<AuthStackParamList>>();
 
   const { control, handleSubmit } = useForm<LoginFormData>({
-    defaultValues: initialFormData,
     resolver: yupResolver(getSchema()),
   });
 
-  const login = async (request: LoginFormData) => {
-    await dispatch(loginAction(request)).unwrap();
-    navigation.navigate(codeConfirmationRoute, { phone: request.phone });
+  const { mutateAsync, isLoading } = useMutation(AuthClient.login);
+
+  const login = (data: LoginFormData) => {
+    return mutateAsync(data, {
+      onSuccess: () => navigation.navigate(codeConfirmationRoute, { phone: data.phone }),
+    });
   };
 
-  return { login, isLoading, control, handleSubmit };
+  return {
+    login,
+    isLoading,
+    control,
+    handleSubmit,
+  };
 };
 
 export default useLoginForm;

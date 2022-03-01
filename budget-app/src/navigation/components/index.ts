@@ -1,6 +1,6 @@
-import Drawer from './Drawer';
+import DrawerContent from './DrawerContent';
 import DrawerToggleButton from './DrawerToggleButton';
 import Language from './Language';
 import BackButton from './BackButton';
 
-export { Drawer, DrawerToggleButton, Language, BackButton };
+export { DrawerContent, DrawerToggleButton, Language, BackButton };

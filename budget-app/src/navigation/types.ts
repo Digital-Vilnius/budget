@@ -21,6 +21,9 @@ export const transactionRoute: TransactionRoute = 'Transaction';
 export type TransactionFormRoute = 'TransactionForm';
 export const transactionFormRoute: TransactionFormRoute = 'TransactionForm';
 
+export type AccountsRoute = 'Accounts';
+export const accountsRoute: AccountsRoute = 'Accounts';
+
 // Drawer
 
 export type DrawerNavigator = 'Drawer';

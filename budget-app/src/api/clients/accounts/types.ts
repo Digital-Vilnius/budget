@@ -5,5 +5,5 @@ export interface Account extends BaseModel {
 }
 
 export interface AccountsFilter {
-  keyword?: string;
+  userId?: number;
 }

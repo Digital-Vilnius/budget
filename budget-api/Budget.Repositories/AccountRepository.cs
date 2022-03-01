@@ -21,13 +21,12 @@ namespace Budget.Repositories
             return query.Include(account => account.Users);
         }
 
-        public async Task<List<Account>> GetAsync(AccountsFilter filter, Paging paging)
+        public async Task<List<Account>> GetAsync(AccountsFilter filter)
         {
             IQueryable<Account> query = Context.Set<Account>();
             query = FormatQuery(query);
             query = ApplyFilter(query, filter);
             query = query.OrderByDescending(account => account.Name);
-            query = ApplyPaging(query, paging);
             return await query.ToListAsync();
         }
 
