@@ -6,7 +6,5 @@ namespace Budget.Contracts.Account
     {
         [Required]
         public int UserId { get; set; }
-        
-        public string? Keyword { get; set; }
     }
 }

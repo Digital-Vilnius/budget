@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Budget.Contracts;
 using Budget.Contracts.Account;
 using Budget.Models;
 using Budget.Models.Repositories;
@@ -42,7 +41,6 @@ namespace Budget.Repositories
         {
             query = query.Where(account => account.IsDeleted == false);
             query = query.Where(account => account.Users.Select((user) => user.UserId).Contains(filter.UserId));
-            if (filter.Keyword != null) query = query.Where(account => account.Name.Contains(filter.Keyword));
             return query;
         }
     }
