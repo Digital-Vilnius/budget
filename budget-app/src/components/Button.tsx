@@ -9,27 +9,30 @@ import {
   ViewStyle,
 } from 'react-native';
 import { center, row } from '@styles/styles';
-import { colors, fonts, fontSizes, lineHeights } from '@styles/constants';
+import { borderRadius, colors, fonts, fontSizes, lineHeights } from '@styles/constants';
 
 interface Props {
   label: string;
+  variant?: 'primary' | 'secondary';
   isLoading?: boolean;
   disabled?: boolean;
   onPress?: () => void;
-  containerStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
 }
 
 const Button: FC<Props> = (props) => {
-  const { onPress, label, containerStyle, labelStyle, isLoading } = props;
+  const { onPress, label, style, labelStyle, isLoading, variant = 'primary' } = props;
+  const backgroundColor = variant === 'primary' ? colors.button.primary : colors.button.secondary;
+  const color = variant === 'primary' ? colors.white : colors.text.primary;
 
   return (
     <TouchableOpacity
       disabled={isLoading}
-      style={[center, styles.container, row, containerStyle]}
+      style={[center, row, styles.container, { backgroundColor }, style]}
       onPress={onPress}
     >
-      {!isLoading && <Text style={[styles.label, labelStyle]}>{label}</Text>}
+      {!isLoading && <Text style={[styles.label, { color }, labelStyle]}>{label}</Text>}
       {isLoading && <ActivityIndicator color={colors.white} />}
     </TouchableOpacity>
   );
@@ -37,16 +40,15 @@ const Button: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: colors.button.primary,
-    position: 'relative',
+    height: 44,
+    borderRadius: borderRadius.m,
   },
   label: {
-    fontSize: fontSizes.m,
-    lineHeight: lineHeights.m,
-    color: colors.white,
-    fontFamily: fonts.secondary.semiBold,
+    fontSize: fontSizes.s,
+    lineHeight: lineHeights.l,
+    fontWeight: '500',
+    letterSpacing: -0.2,
+    fontFamily: fonts.primary.medium,
   },
 });
 

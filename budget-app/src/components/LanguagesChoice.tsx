@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { LanguagesUtils } from '@utils';
+import { LanguageUtils } from '@utils';
 import { flex1, row, spaceBetween } from '@styles/styles';
 import { colors, fonts, fontSizes, lineHeights, sizes } from '@styles/constants';
 import Radio from './Radio';
@@ -15,7 +15,7 @@ const LanguagesChoice: FC<Props> = (props) => {
 
   return (
     <View>
-      {LanguagesUtils.languagesChoices.map((choice) => (
+      {LanguageUtils.languagesChoices.map((choice) => (
         <TouchableOpacity
           style={[row, spaceBetween, styles.choice]}
           onPress={() => onChange(choice.value)}
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     marginRight: sizes.m,
   },
   label: {
-    fontFamily: fonts.secondary.regular,
-    fontSize: fontSizes.m,
+    fontFamily: fonts.primary.regular,
+    fontSize: fontSizes.s,
     lineHeight: lineHeights.m,
     color: colors.text.primary,
   },

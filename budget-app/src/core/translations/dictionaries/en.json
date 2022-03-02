@@ -6,22 +6,50 @@
     "accounts": "Accounts",
     "category": "Category",
     "edit_category": "Edit category",
-    "add_category": "Add category"
+    "add_category": "Add category",
+    "sign_in": "Let’s Sign You In",
+    "sign_up": "Getting Started",
+    "confirm_code": "Verify your identity",
+    "terms_and_conditions": "Terms and conditions",
+    "transaction": "Transaction",
+    "current_balance": "Current balance",
+    "categories": "Categories",
+    "recent_transactions": "Recent transactions",
+    "expenses": "Expenses",
+    "incomes": "Incomes"
+  },
+  "phrases": {
+    "sign_in": "Welcome back, you’ve been missed!",
+    "sign_up": "Create an account to continue!",
+    "confirm_code": "We have just sent a code to {{phone}}",
+    "sign_in_agreement": "By Signing up, you agree to our",
+    "did_not_receive_code": "Did not receive code?"
   },
   "labels": {
-    "phone": "Phone",
+    "phone_number": "Phone number",
     "first_name": "First name",
     "last_name": "Last name",
     "code": "Code",
     "name": "Name",
-    "parent": "Parent"
+    "parent": "Parent",
+    "transactions_count": "Transactions {{count}}"
   },
   "buttons": {
     "back": "Back",
     "register": "Register",
-    "login": "Login",
+    "sign_in": "Sign In",
     "confirm": "Confirm",
-    "save": "Save"
+    "save": "Save",
+    "create_an_account": "Create an account",
+    "sign_in_to_an_existing_account": "Sign in to an existing account",
+    "sign_up": "Sign Up",
+    "change_phone_number": "Change phone number",
+    "terms_and_conditions": "Terms and conditions",
+    "resend_code": "Resend code",
+    "add_category": "Add category",
+    "add_transaction": "Add transaction",
+    "invite_user": "Invite user",
+    "see_all": "See all"
   },
   "validations": {
     "field_is_required": "Field is required",

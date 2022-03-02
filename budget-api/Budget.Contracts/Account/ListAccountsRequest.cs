@@ -2,7 +2,7 @@
 
 namespace Budget.Contracts.Account
 {
-    public class ListAccountsRequest
+    public class ListAccountsRequest : ListRequest
     {
         [Required]
         public int UserId { get; set; }

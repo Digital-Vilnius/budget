@@ -2,29 +2,28 @@ import { Control, Controller } from 'react-hook-form';
 import { LoginFormData } from '@features/auth/types';
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { Button, Input } from '@components';
+import { Input } from '@components';
 import { useTranslation } from 'react-i18next';
-import { bottomSpacings, paddings } from '@styles/constants';
+import { bottomSpacings } from '@styles/constants';
 
 interface Props {
-  onSubmit: () => void;
   control: Control<LoginFormData>;
-  isLoading: boolean;
 }
 
 const LoginForm: FC<Props> = (props) => {
-  const { onSubmit, control, isLoading } = props;
+  const { control } = props;
   const { t } = useTranslation();
 
   return (
-    <View style={paddings.m}>
+    <View>
       <Controller
         control={control}
         name="phone"
         render={({ field, fieldState: { error } }) => (
           <Input
+            label={t('labels.phone_number')}
             style={bottomSpacings.xs}
-            placeholder={t('labels.phone')}
+            placeholder={t('labels.phone_number')}
             onBlur={field.onBlur}
             onChange={field.onChange}
             value={field.value}
@@ -32,7 +31,6 @@ const LoginForm: FC<Props> = (props) => {
           />
         )}
       />
-      <Button isLoading={isLoading} label={t('buttons.login')} onPress={onSubmit} />
     </View>
   );
 };

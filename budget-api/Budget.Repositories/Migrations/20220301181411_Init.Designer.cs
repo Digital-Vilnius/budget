@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Budget.Repositories.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20220228165208_Init2")]
-    partial class Init2
+    [Migration("20220301181411_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,6 +146,10 @@ namespace Budget.Repositories.Migrations
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -160,7 +164,6 @@ namespace Budget.Repositories.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("ParentId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Updated")
@@ -321,8 +324,7 @@ namespace Budget.Repositories.Migrations
                     b.HasOne("Budget.Models.Category", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Account");
 

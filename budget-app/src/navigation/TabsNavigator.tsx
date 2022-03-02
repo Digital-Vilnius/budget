@@ -9,6 +9,12 @@ import { SettingsScreen } from '@features/settings/screens';
 import { UsersScreen } from '@features/users/screens';
 import { DashboardScreen } from '@features/dashboard/screens';
 import {
+  cardStyle,
+  headerLeftContainerStyle,
+  headerRightContainerStyle,
+  headerTitleStyle,
+} from '@navigation/styles';
+import {
   categoriesRoute,
   dashboardRoute,
   settingsRoute,
@@ -29,12 +35,21 @@ const Tabs = createBottomTabNavigator<TabsParamList>();
 
 const screenOptions: BottomTabNavigationOptions = {
   headerShown: true,
+  headerShadowVisible: false,
+  headerTitleAlign: 'center',
+  headerTitleStyle,
+  headerLeftContainerStyle,
+  headerRightContainerStyle,
   headerLeft: () => <DrawerToggleButton />,
 };
 
 const TabsNavigator: FC = () => {
   return (
-    <Tabs.Navigator initialRouteName={dashboardRoute} screenOptions={screenOptions}>
+    <Tabs.Navigator
+      initialRouteName={dashboardRoute}
+      sceneContainerStyle={cardStyle}
+      screenOptions={screenOptions}
+    >
       <Tabs.Screen name={dashboardRoute} component={DashboardScreen} />
       <Tabs.Screen name={transactionsRoute} component={TransactionsScreen} />
       <Tabs.Screen name={categoriesRoute} component={CategoriesScreen} />

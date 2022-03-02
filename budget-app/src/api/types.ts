@@ -1,6 +1,6 @@
 export interface ListRequest<T = undefined> {
   filter: T;
-  paging: Paging;
+  paging?: Paging;
 }
 
 export interface ResultResponse<T> {

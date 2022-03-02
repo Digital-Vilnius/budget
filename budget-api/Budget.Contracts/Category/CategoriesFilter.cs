@@ -7,7 +7,6 @@ namespace Budget.Contracts.Category
         [Required]
         public int AccountId { get; set; }
         
-        public string? Keyword { get; set; }
         public int? ParentId { get; set; }
     }
 }

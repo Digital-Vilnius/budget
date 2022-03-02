@@ -1,8 +1,13 @@
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { ScreenContainer } from '@components';
+import { Dashboard } from '../hoc';
 
 const DashboardScreen: FC = () => {
-  return <View />;
+  return (
+    <ScreenContainer>
+      <Dashboard />
+    </ScreenContainer>
+  );
 };
 
 export default DashboardScreen;

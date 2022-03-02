@@ -25,13 +25,13 @@ namespace Budget.Repositories
                 .Include(category => category.Transactions);
         }
 
-        public async Task<List<Category>> GetAsync(CategoriesFilter filter, Paging paging)
+        public async Task<List<Category>> GetAsync(CategoriesFilter filter, Paging? paging = null)
         {
             IQueryable<Category> query = Context.Set<Category>();
             query = FormatQuery(query);
             query = ApplyFilter(query, filter);
             query = query.OrderByDescending(category => category.Name);
-            query = ApplyPaging(query, paging);
+            if (paging != null) query = ApplyPaging(query, paging);
             return await query.ToListAsync();
         }
 
@@ -47,7 +47,7 @@ namespace Budget.Repositories
         {
             query = query.Where(category => category.IsDeleted == false);
             query = query.Where(category => category.AccountId == filter.AccountId);
-            if (filter.ParentId.HasValue) query = query.Where(category => category.ParentId == filter.ParentId.Value);
+            query = filter.ParentId.HasValue ? query.Where(category => category.ParentId == filter.ParentId.Value) : query.Where(category => category.ParentId == null);
             return query;
         }
     }

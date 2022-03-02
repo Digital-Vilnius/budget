@@ -1,41 +1,44 @@
 import React, { FC } from 'react';
 import {
-  KeyboardTypeOptions,
   StyleProp,
   StyleSheet,
   Text,
   TextInput,
+  TextInputProps,
   View,
   ViewStyle,
 } from 'react-native';
-import { borderRadius, colors, fonts, fontSizes, lineHeights, sizes } from '@styles/constants';
+import {
+  borderRadius,
+  bottomSpacings,
+  colors,
+  fonts,
+  fontSizes,
+  lineHeights,
+  sizes,
+} from '@styles/constants';
 import hexToRgba from 'hex-to-rgba';
 
-interface Props {
+type Props = Omit<TextInputProps, 'editable' | 'onChange' | 'placeholderTextColor'> & {
   onChange: (value: string) => void;
-  value: string;
-  onBlur?: () => void;
-  keyboardType?: KeyboardTypeOptions;
-  placeholder?: string;
+  label?: string;
   disabled?: boolean;
-  style?: StyleProp<ViewStyle>;
   error?: string;
-}
+  containerStyle?: StyleProp<ViewStyle>;
+};
 
 const Input: FC<Props> = (props) => {
-  const { onChange, value, disabled, placeholder, onBlur, style, keyboardType, error } = props;
+  const { onChange, label, disabled, error, containerStyle, style, ...rest } = props;
 
   return (
-    <View style={style}>
+    <View style={[styles.container, containerStyle]}>
+      {!!label && <Text style={[styles.label, bottomSpacings.s]}>{label}</Text>}
       <TextInput
-        keyboardType={keyboardType}
-        style={styles.input}
+        style={[styles.input, style]}
         onChangeText={(text) => onChange(text)}
-        value={value}
-        onBlur={onBlur}
         placeholderTextColor={hexToRgba(colors.text.primary, 0.4)}
-        placeholder={placeholder}
         editable={!disabled}
+        {...rest}
       />
       {!!error && <Text style={styles.error}>{error}</Text>}
     </View>
@@ -43,22 +46,34 @@ const Input: FC<Props> = (props) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+  },
+  label: {
+    fontWeight: '500',
+    fontFamily: fonts.primary.medium,
+    fontSize: fontSizes.s,
+    lineHeight: lineHeights.l,
+    letterSpacing: -0.2,
+    color: colors.text.tertiary,
+  },
   input: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.grey.light,
+    borderRadius: borderRadius.m,
     paddingHorizontal: sizes.m,
-    height: 48,
-    borderRadius: borderRadius.s,
-    fontFamily: fonts.secondary.regular,
-    fontSize: fontSizes.m,
-    lineHeight: lineHeights.m,
+    height: 44,
+    fontFamily: fonts.primary.regular,
+    letterSpacing: -0.2,
+    fontSize: fontSizes.s,
+    lineHeight: lineHeights.l,
     color: colors.text.primary,
   },
   error: {
-    color: colors.primary,
-    fontSize: fontSizes.s,
+    color: colors.danger,
+    fontSize: fontSizes.xs,
     lineHeight: lineHeights.s,
-    fontFamily: fonts.secondary.regular,
-    marginTop: sizes.xxxs,
+    fontFamily: fonts.primary.regular,
+    marginTop: sizes.xs,
   },
 });
 

@@ -7,9 +7,8 @@ import { CategoryForm } from '../hoc';
 const CategoryFormScreen: FC<StackScreenProps<MainStackParamList, CategoryFormRoute>> = (props) => {
   const { route } = props;
   const { params } = route;
-  const { id } = params;
 
-  return <CategoryForm id={id} />;
+  return <CategoryForm id={params?.id} />;
 };
 
 export default CategoryFormScreen;

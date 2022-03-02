@@ -1,38 +1,34 @@
 import { Control, Controller } from 'react-hook-form';
 import { ConfirmCodeFormData } from '@features/auth/types';
 import React, { FC } from 'react';
-import { View } from 'react-native';
-import { Button, Input } from '@components';
-import { useTranslation } from 'react-i18next';
-import { bottomSpacings, paddings } from '@styles/constants';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { CodeInput } from '@components';
 
 interface Props {
-  onSubmit: () => void;
   control: Control<ConfirmCodeFormData>;
-  isLoading: boolean;
+  onSubmit: () => void;
+  style?: StyleProp<ViewStyle>;
 }
 
 const CodeConfirmationForm: FC<Props> = (props) => {
-  const { onSubmit, control, isLoading } = props;
-  const { t } = useTranslation();
+  const { control, style, onSubmit } = props;
 
   return (
-    <View style={paddings.m}>
+    <View style={style}>
       <Controller
         control={control}
         name="code"
         render={({ field, fieldState: { error } }) => (
-          <Input
-            style={bottomSpacings.xs}
-            placeholder={t('labels.code')}
-            onBlur={field.onBlur}
-            onChange={field.onChange}
+          <CodeInput
+            onChange={(code) => {
+              field.onChange(code);
+              if (code.length === 4) onSubmit();
+            }}
             value={field.value}
             error={error?.message}
           />
         )}
       />
-      <Button isLoading={isLoading} label={t('buttons.confirm')} onPress={onSubmit} />
     </View>
   );
 };

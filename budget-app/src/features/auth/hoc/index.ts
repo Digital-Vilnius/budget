@@ -1,5 +1,5 @@
-import LoginForm from './LoginForm';
-import RegistrationForm from './RegistrationForm';
-import CodeConfirmationForm from './CodeConfirmationForm';
+import Login from './Login';
+import Registration from './Registration';
+import CodeConfirmation from './CodeConfirmation';
 
-export { LoginForm, RegistrationForm, CodeConfirmationForm };
+export { Login, Registration, CodeConfirmation };

@@ -12,7 +12,7 @@ const useAccounts = () => {
   const userId = useAppSelector((state) => state.auth.userId) ?? undefined;
 
   const getAccountsFn = async () => {
-    return AccountsClient.getAccounts({ userId });
+    return AccountsClient.getAccounts({ filter: { userId } });
   };
 
   const { isLoading, isRefetching, refetch, data } = useQuery(

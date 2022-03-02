@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Switch as RNSwitch } from 'react-native-switch';
-import { colors } from '@styles/constants';
 
 interface Props {
   selected: boolean;
@@ -19,10 +18,6 @@ const Switch: FC<Props> = (props) => {
       circleSize={28}
       barHeight={32}
       circleBorderWidth={0}
-      backgroundActive={colors.switch.activeBackground}
-      backgroundInactive={colors.switch.inactiveBackground}
-      circleActiveColor={colors.switch.circle}
-      circleInActiveColor={colors.switch.circle}
       changeValueImmediately={true}
       renderActiveText={false}
       renderInActiveText={false}

@@ -21,7 +21,7 @@ const Section: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: fontSizes.s,
+    fontSize: fontSizes.xs,
     lineHeight: lineHeights.s,
     color: colors.text.primary,
     fontFamily: fonts.primary.bold,

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { useAppSelector } from '@core/store';
+import { cardStyle } from '@navigation/styles';
 import { authNavigator, mainNavigator } from './types';
 import MainNavigator from './MainNavigator';
 import AuthNavigator from './AuthNavigator';
@@ -15,6 +16,7 @@ const RootStack = createStackNavigator<RootStackParamList>();
 
 const screenOptions: StackNavigationOptions = {
   headerShown: false,
+  cardStyle,
 };
 
 const RootNavigator: FC = () => {

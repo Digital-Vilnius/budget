@@ -8,6 +8,9 @@ namespace Budget.Models
         [Required]
         public string Name { get; set; }
         
+        [Required]
+        public string Color { get; set; }
+        
         public int? ParentId { get; set; }
         public Category? Parent { get; set; }
         

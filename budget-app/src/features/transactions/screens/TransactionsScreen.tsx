@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { Transactions } from '../hoc';
 
 const TransactionsScreen: FC = () => {
-  return <View />;
+  return <Transactions />;
 };
 
 export default TransactionsScreen;

@@ -1,42 +1,28 @@
-import { useAppSelector } from '@core/store';
 import { CategoriesClient } from '@api/clients';
-import { PagingUtils } from '@utils';
-import { useInfiniteQuery } from 'react-query';
+import { useQuery } from 'react-query';
+import { useAppSelector } from '@core/store';
 import { CategoriesFilter } from '@api/clients/categories/types';
 import { mapCategory } from '../map';
 
 export const getQueryKey = (filter: CategoriesFilter) => {
-  return ['categories', filter];
+  return ['accounts', filter];
 };
 
 const useCategories = () => {
   const { filter } = useAppSelector((state) => state.categories);
 
-  const getCategoriesFn = async ({ pageParam = 0 }) => {
-    const paging = PagingUtils.getPaging(pageParam);
-    return CategoriesClient.getCategories({ filter, paging });
+  const getCategoriesFn = async () => {
+    return CategoriesClient.getCategories({ filter });
   };
 
-  const { isLoading, isRefetching, refetch, hasNextPage, fetchNextPage, data } = useInfiniteQuery(
-    getQueryKey(filter),
-    getCategoriesFn,
-    {
-      getNextPageParam: (lastPage, allPages) => {
-        const lastCount = lastPage.count;
-        const fetchedCount = allPages.map((page) => page.result).flat().length;
-        if (fetchedCount >= lastCount) return false;
-        return PagingUtils.getCurrentPage(fetchedCount, lastCount) + 1;
-      },
-    }
-  );
+  const { isLoading, isRefetching, refetch, data } = useQuery(getQueryKey(filter), getCategoriesFn);
 
   return {
-    count: data?.pages[data?.pages.length - 1].count ?? 0,
-    categories: data?.pages.map((page) => page.result.map(mapCategory)).flat() ?? [],
+    count: data?.count ?? 0,
+    categories: data?.result.map(mapCategory) ?? [],
     isLoading,
     isRefetching,
     refetch,
-    loadMore: () => hasNextPage && fetchNextPage(),
   };
 };
 

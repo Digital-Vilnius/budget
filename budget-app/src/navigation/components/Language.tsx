@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useAppSelector } from '@core/store';
 import { useNavigation } from '@react-navigation/native';
 import { Image, TouchableOpacity } from 'react-native';
-import { LanguagesUtils } from '@utils';
+import { LanguageUtils } from '@utils';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { TabsParamList } from '@navigation/TabsNavigator';
 import { settingsRoute } from '../types';
@@ -17,7 +17,7 @@ const Language: FC = () => {
 
   return (
     <TouchableOpacity onPress={handleOnPress}>
-      <Image source={LanguagesUtils.getIcon(locale)} />
+      <Image source={LanguageUtils.getIcon(locale)} />
     </TouchableOpacity>
   );
 };

@@ -9,6 +9,13 @@ import { ProfileScreen } from '@features/profile/screens';
 import { AccountsScreen } from '@features/accounts/screens';
 import { useAppSelector } from '@core/store';
 import {
+  cardStyle,
+  headerLeftContainerStyle,
+  headerRightContainerStyle,
+  headerTitleStyle,
+} from '@navigation/styles';
+import { BackButton } from './components';
+import {
   accountsRoute,
   categoryFormRoute,
   categoryRoute,
@@ -22,9 +29,9 @@ import {
 
 export type MainStackParamList = {
   [categoryRoute]: { id: number };
-  [categoryFormRoute]: { id?: number };
+  [categoryFormRoute]: { id: number } | undefined;
   [transactionRoute]: { id: number };
-  [transactionFormRoute]: { id?: number };
+  [transactionFormRoute]: { id: number } | undefined;
   [userRoute]: { id: number };
   [userFormRoute]: { id?: number };
   [accountsRoute]: undefined;
@@ -36,6 +43,13 @@ const MainStack = createStackNavigator<MainStackParamList>();
 
 const screenOptions: StackNavigationOptions = {
   headerShown: true,
+  cardStyle,
+  headerShadowVisible: false,
+  headerTitleAlign: 'center',
+  headerTitleStyle,
+  headerLeftContainerStyle,
+  headerRightContainerStyle,
+  headerLeft: ({ canGoBack }) => (canGoBack ? <BackButton /> : undefined),
 };
 
 const MainNavigator: FC = () => {

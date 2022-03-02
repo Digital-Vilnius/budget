@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Budget.Contracts;
 using Budget.Contracts.Account;
 using Budget.Models;
 using Budget.Models.Repositories;
@@ -17,15 +18,19 @@ namespace Budget.Repositories
         
         protected override IQueryable<Account> FormatQuery(IQueryable<Account> query)
         {
-            return query.Include(account => account.Users);
+            return query
+                .Include(account => account.Users)
+                .Include(account => account.Categories)
+                .ThenInclude(category => category.Transactions);
         }
 
-        public async Task<List<Account>> GetAsync(AccountsFilter filter)
+        public async Task<List<Account>> GetAsync(AccountsFilter filter, Paging? paging = null)
         {
             IQueryable<Account> query = Context.Set<Account>();
             query = FormatQuery(query);
             query = ApplyFilter(query, filter);
             query = query.OrderByDescending(account => account.Name);
+            if (paging != null) query = ApplyPaging(query, paging);
             return await query.ToListAsync();
         }
 

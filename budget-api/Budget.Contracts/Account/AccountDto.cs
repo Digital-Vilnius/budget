@@ -9,5 +9,14 @@ namespace Budget.Contracts.Account
         
         [Required]
         public string Currency { get; set; }
+        
+        [Required]
+        public decimal Balance { get; set; }
+        
+        [Required]
+        public decimal Incomes { get; set; }
+        
+        [Required]
+        public decimal Expenses { get; set; }
     }
 }

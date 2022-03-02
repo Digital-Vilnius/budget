@@ -22,11 +22,10 @@ const styles = StyleSheet.create({
     paddingBottom: sizes.m,
   },
   link: {
-    fontSize: fontSizes.s,
+    fontSize: fontSizes.xs,
     lineHeight: lineHeights.s,
     color: colors.text.primary,
     textAlign: 'center',
-    fontFamily: fonts.secondary.regular,
   },
 });
 

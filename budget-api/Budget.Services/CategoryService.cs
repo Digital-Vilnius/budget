@@ -50,8 +50,12 @@ namespace Budget.Services
 
         public async Task<ListResponse<TModel>> GetAsync<TModel>(ListCategoriesRequest request)
         {
+            var isPaging = request.Limit.HasValue && request.Offset.HasValue;
+            
+            Paging? paging = null;
+            if (isPaging) paging = _mapper.Map<ListCategoriesRequest, Paging>(request);
+            
             var filter = _mapper.Map<ListCategoriesRequest, CategoriesFilter>(request);
-            var paging = _mapper.Map<ListCategoriesRequest, Paging>(request);
 
             var categories = await _categoryRepository.GetAsync(filter, paging);
             var categoriesCount = await _categoryRepository.CountAsync(filter);

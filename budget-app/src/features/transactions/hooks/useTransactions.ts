@@ -11,14 +11,16 @@ export const getQueryKey = (filter: TransactionsFilter) => {
 
 const useTransactions = () => {
   const { filter } = useAppSelector((state) => state.transactions);
+  const selectedAccount = useAppSelector((state) => state.accounts.selectedAccount);
+  const combinedFilter = { ...filter, accountId: selectedAccount?.id };
 
   const getTransactionsFn = async ({ pageParam = 0 }) => {
     const paging = PagingUtils.getPaging(pageParam);
-    return TransactionsClient.getTransactions({ filter, paging });
+    return TransactionsClient.getTransactions({ filter: combinedFilter, paging });
   };
 
   const { isLoading, isRefetching, refetch, hasNextPage, fetchNextPage, data } = useInfiniteQuery(
-    getQueryKey(filter),
+    getQueryKey(combinedFilter),
     getTransactionsFn,
     {
       getNextPageParam: (lastPage, allPages) => {

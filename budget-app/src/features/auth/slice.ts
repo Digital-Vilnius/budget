@@ -22,12 +22,13 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuth(state, action: PayloadAction<AuthResponse>) {
+    setAuth: (state, action: PayloadAction<AuthResponse>) => {
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.userId = action.payload.userId;
       state.isLogged = true;
     },
+    logout: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(refreshTokenAction.pending, (state) => {
@@ -43,5 +44,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAuth } = authSlice.actions;
+export const { setAuth, logout } = authSlice.actions;
 export const { reducer } = authSlice;

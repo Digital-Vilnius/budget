@@ -24,6 +24,9 @@
 		83F76E068D9A45E8B367B083 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 582995F417054D0BAD731F68 /* OpenSans-Light.ttf */; };
 		AE3C71157986480AA7DD0256 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494889FBE1E048CCBF6F04EE /* OpenSans-SemiBold.ttf */; };
 		B6ED71A16E1F4A6C9172FE6A /* Merriweather-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 064D8DA570F64A36A9C5CAAF /* Merriweather-Bold.ttf */; };
+		E3575B1CF3CA4F9785F70F88 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F57D17389864F6791EEAF06 /* DMSans-Bold.ttf */; };
+		6E56808279F645749A801811 /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F58A776EEF64326BDF4148F /* DMSans-Medium.ttf */; };
+		D7A1D260D9E74BAD90682E78 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5E9EF5856214EB9BD46FA8D /* DMSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		D00AAFFCFCFDA5787532823F /* Pods-redesign.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-redesign.release.xcconfig"; path = "Target Support Files/Pods-redesign/Pods-redesign.release.xcconfig"; sourceTree = "<group>"; };
 		E241C96C373A4BCE89288F9A /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		7F57D17389864F6791EEAF06 /* DMSans-Bold.ttf */ = {isa = PBXFileReference; name = "DMSans-Bold.ttf"; path = "../assets/fonts/DMSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2F58A776EEF64326BDF4148F /* DMSans-Medium.ttf */ = {isa = PBXFileReference; name = "DMSans-Medium.ttf"; path = "../assets/fonts/DMSans-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A5E9EF5856214EB9BD46FA8D /* DMSans-Regular.ttf */ = {isa = PBXFileReference; name = "DMSans-Regular.ttf"; path = "../assets/fonts/DMSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,9 @@
 				55FAA21C0246442AA2CECBB6 /* OpenSans-Medium.ttf */,
 				E241C96C373A4BCE89288F9A /* OpenSans-Regular.ttf */,
 				494889FBE1E048CCBF6F04EE /* OpenSans-SemiBold.ttf */,
+				7F57D17389864F6791EEAF06 /* DMSans-Bold.ttf */,
+				2F58A776EEF64326BDF4148F /* DMSans-Medium.ttf */,
+				A5E9EF5856214EB9BD46FA8D /* DMSans-Regular.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -294,6 +303,9 @@
 				4121D8513CE64DA7BE510300 /* OpenSans-Medium.ttf in Resources */,
 				10FE7D0E5DD94FA19626AE5A /* OpenSans-Regular.ttf in Resources */,
 				AE3C71157986480AA7DD0256 /* OpenSans-SemiBold.ttf in Resources */,
+				E3575B1CF3CA4F9785F70F88 /* DMSans-Bold.ttf in Resources */,
+				6E56808279F645749A801811 /* DMSans-Medium.ttf in Resources */,
+				D7A1D260D9E74BAD90682E78 /* DMSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

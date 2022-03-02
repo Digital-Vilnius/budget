@@ -1,36 +1,41 @@
 import React, { FC } from 'react';
-import { FlatList, ListRenderItemInfo } from 'react-native';
+import { FlatList, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 import { ListSeparator } from '@components';
 import CategoriesListItem from './CategoriesListItem';
 import { Category } from '../types';
 
 interface Props {
-  isRefreshing: boolean;
-  onRefresh: () => void;
   data: Category[];
-  onEndReached: () => void;
+  isRefreshing?: boolean;
+  onRefresh?: () => void;
   onItemPress: (category: Category) => void;
+  contentStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
-const Categories: FC<Props> = (props) => {
-  const { isRefreshing, onRefresh, data, onEndReached, onItemPress } = props;
+const CategoriesList: FC<Props> = (props) => {
+  const { isRefreshing, onRefresh, data, onItemPress, contentStyle, style } = props;
 
   const renderItem = (item: ListRenderItemInfo<Category>) => {
     const category = item.item;
-    return <CategoriesListItem onPress={() => onItemPress(category)} category={category} />;
+
+    return (
+      <CategoriesListItem onPress={() => onItemPress(category)} iconSize="s" category={category} />
+    );
   };
 
   return (
     <FlatList
+      style={style}
       ItemSeparatorComponent={ListSeparator}
+      contentContainerStyle={contentStyle}
       refreshing={isRefreshing}
       onRefresh={onRefresh}
       data={data}
-      onEndReached={onEndReached}
       keyExtractor={(item) => item.id.toString()}
       renderItem={renderItem}
     />
   );
 };
 
-export default Categories;
+export default CategoriesList;

@@ -1,3 +1,4 @@
 import useTransactions from './useTransactions';
+import useRecentTransactions from './useRecentTransactions';
 
-export { useTransactions };
+export { useTransactions, useRecentTransactions };

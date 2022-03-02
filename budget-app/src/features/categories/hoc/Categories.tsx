@@ -3,12 +3,14 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackParamList } from '@navigation/MainNavigator';
 import { categoryRoute } from '@navigation/types';
-import { Categories as ControlledCategories } from '../components';
+import { sizes } from '@styles/constants';
+import { StyleSheet } from 'react-native';
+import { CategoriesList } from '../components';
 import { useCategories } from '../hooks';
 import { Category } from '../types';
 
 const Categories: FC = () => {
-  const { categories, isLoading, loadMore, isRefetching, refetch } = useCategories();
+  const { categories, isLoading, isRefetching, refetch } = useCategories();
   const navigation = useNavigation<StackNavigationProp<MainStackParamList>>();
 
   const handleItemPress = (category: Category) => {
@@ -16,14 +18,21 @@ const Categories: FC = () => {
   };
 
   return (
-    <ControlledCategories
+    <CategoriesList
       data={categories}
       onRefresh={refetch}
+      contentStyle={styles.content}
       isRefreshing={isLoading || isRefetching}
       onItemPress={handleItemPress}
-      onEndReached={loadMore}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  content: {
+    paddingHorizontal: sizes.xl,
+    paddingBottom: sizes.l,
+  },
+});
 
 export default Categories;

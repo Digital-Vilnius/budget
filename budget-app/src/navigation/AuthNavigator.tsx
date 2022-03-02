@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import { CodeConfirmationScreen, LoginScreen, RegistrationScreen } from '@features/auth/screens';
 import { useTranslation } from 'react-i18next';
+import { cardStyle } from '@navigation/styles';
 import { codeConfirmationRoute, loginRoute, registrationRoute } from './types';
 
 export type AuthStackParamList = {
@@ -13,7 +14,8 @@ export type AuthStackParamList = {
 const AuthStack = createStackNavigator<AuthStackParamList>();
 
 const screenOptions: StackNavigationOptions = {
-  headerShown: true,
+  headerShown: false,
+  cardStyle,
 };
 
 const AuthNavigator: FC = () => {

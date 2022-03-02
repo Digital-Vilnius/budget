@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StyleProp, StyleSheet, Text, TextInput, View, ViewStyle } from 'react-native';
-import { borderRadius, colors, fonts, fontSizes, lineHeights, sizes } from '@styles/constants';
+import { borderRadius, colors, fontSizes, lineHeights, sizes } from '@styles/constants';
 import hexToRgba from 'hex-to-rgba';
 
 interface Props {
@@ -41,18 +41,15 @@ const styles = StyleSheet.create({
     paddingVertical: sizes.m,
     height: 120,
     borderRadius: borderRadius.s,
-    fontFamily: fonts.secondary.regular,
-    fontSize: fontSizes.m,
+    fontSize: fontSizes.s,
     lineHeight: lineHeights.m,
     color: colors.text.primary,
     textAlignVertical: 'top',
   },
   error: {
     color: colors.primary,
-    fontSize: fontSizes.s,
+    fontSize: fontSizes.xs,
     lineHeight: lineHeights.s,
-    fontFamily: fonts.secondary.regular,
-    marginTop: sizes.xxxs,
   },
 });
 

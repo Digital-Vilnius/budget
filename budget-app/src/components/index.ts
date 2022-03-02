@@ -7,6 +7,7 @@ import Radio from './Radio';
 import LanguagesChoice from './LanguagesChoice';
 import Input from './Input';
 import Textarea from './Textarea';
+import CodeInput from './CodeInput';
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   LanguagesChoice,
   Input,
   Textarea,
+  CodeInput,
 };

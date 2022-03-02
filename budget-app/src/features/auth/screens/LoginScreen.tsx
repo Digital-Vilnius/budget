@@ -1,8 +1,13 @@
 import React, { FC } from 'react';
-import { LoginForm } from '../hoc';
+import { ScreenContainer } from '@components';
+import { Login } from '../hoc';
 
 const LoginScreen: FC = () => {
-  return <LoginForm />;
+  return (
+    <ScreenContainer>
+      <Login />
+    </ScreenContainer>
+  );
 };
 
 export default LoginScreen;

@@ -3,7 +3,7 @@ import { Control, Controller } from 'react-hook-form';
 import { SettingsFormData } from '@features/settings/types';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button, LanguagesChoice, Section, Switch } from '@components';
-import { bottomSpacings, colors, fonts, fontSizes, lineHeights, sizes } from '@styles/constants';
+import { bottomSpacings, colors, fontSizes, lineHeights, sizes } from '@styles/constants';
 import { flex1, row, spaceBetween } from '@styles/styles';
 import { useTranslation } from 'react-i18next';
 
@@ -59,14 +59,11 @@ const styles = StyleSheet.create({
   },
   notificationsTitle: {
     color: colors.text.primary,
-    fontFamily: fonts.secondary.semiBold,
-    fontSize: fontSizes.m,
+    fontSize: fontSizes.s,
     lineHeight: lineHeights.m,
-    marginBottom: sizes.xxxs,
   },
   notificationsDescription: {
     color: colors.text.primary,
-    fontFamily: fonts.secondary.regular,
     fontSize: fontSizes.xs,
     lineHeight: lineHeights.xs,
     opacity: 0.6,

@@ -68,17 +68,17 @@ const styles = StyleSheet.create({
   },
   label: {
     paddingLeft: sizes.m,
-    fontFamily: fonts.secondary.regular,
-    fontSize: fontSizes.s,
+    fontFamily: fonts.primary.regular,
+    fontSize: fontSizes.xs,
     lineHeight: lineHeights.s,
     color: colors.text.primary,
   },
   error: {
     color: colors.primary,
-    fontSize: fontSizes.s,
+    fontSize: fontSizes.xs,
     lineHeight: lineHeights.s,
-    fontFamily: fonts.secondary.regular,
-    marginTop: sizes.xxxs,
+    fontFamily: fonts.primary.regular,
+    marginTop: sizes.xs,
   },
 });
 
