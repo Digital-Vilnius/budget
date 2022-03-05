@@ -5,6 +5,7 @@ import * as UsersClient from './users';
 import * as AuthClient from './auth';
 import * as SettingsClient from './settings';
 import * as ProfileClient from './profile';
+import * as ChartsClient from './charts';
 
 export {
   CategoriesClient,
@@ -14,4 +15,5 @@ export {
   AuthClient,
   SettingsClient,
   ProfileClient,
+  ChartsClient,
 };

@@ -14,7 +14,7 @@ const CategoriesGridSeparator: FC<LinkProps> = (props) => {
 
 const styles = StyleSheet.create({
   separator: {
-    backgroundColor: colors.white,
+    backgroundColor: 'transparent',
   },
 });
 

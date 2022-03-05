@@ -9,9 +9,8 @@ const CodeConfirmationScreen: FC<StackScreenProps<AuthStackParamList, CodeConfir
 ) => {
   const { route } = props;
   const { params } = route;
-  const { phone } = params;
 
-  return <CodeConfirmation phone={phone} />;
+  return <CodeConfirmation phone={params.phone} />;
 };
 
 export default CodeConfirmationScreen;

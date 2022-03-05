@@ -9,6 +9,7 @@ import { reducer as transactionsReducer } from '@features/transactions/slice';
 import { reducer as usersReducer } from '@features/users/slice';
 import { reducer as authReducer } from '@features/auth/slice';
 import { reducer as accountsReducer } from '@features/accounts/slice';
+import { reducer as setupReducer } from '@features/setup/slice';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist/es/constants';
 
 const persistConfig = {
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   users: usersReducer,
   auth: authReducer,
   accounts: accountsReducer,
+  setup: setupReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -16,7 +16,8 @@
     "categories": "Categories",
     "recent_transactions": "Recent transactions",
     "expenses": "Expenses",
-    "incomes": "Incomes"
+    "incomes": "Incomes",
+    "transaction_form": "Transaction form"
   },
   "phrases": {
     "sign_in": "Welcome back, you’ve been missed!",
@@ -32,7 +33,9 @@
     "code": "Code",
     "name": "Name",
     "parent": "Parent",
-    "transactions_count": "Transactions {{count}}"
+    "transactions_count": "Transactions {{count}}",
+    "description": "Description",
+    "amount": "Amount"
   },
   "buttons": {
     "back": "Back",

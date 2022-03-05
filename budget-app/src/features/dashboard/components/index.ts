@@ -1,4 +1,7 @@
-import Dashboard from './Dashboard';
+import Statistics from './Statistics';
 import ActionButton from './ActionButton';
+import RecentTransactions from './RecentTransactions';
+import Categories from './Categories';
+import QuickActions from './QuickActions';
 
-export { Dashboard, ActionButton };
+export { Statistics, ActionButton, RecentTransactions, Categories, QuickActions };

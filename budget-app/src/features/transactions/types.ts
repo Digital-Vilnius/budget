@@ -13,3 +13,11 @@ export interface TransactionsSection {
   title: string;
   data: Transaction[];
 }
+
+export interface TransactionFormData {
+  amount: number;
+  description: string;
+  date: string;
+  categoryId: number;
+  ownerId?: number;
+}

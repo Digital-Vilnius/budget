@@ -1,3 +1,4 @@
 import Transactions from './Transactions';
+import TransactionForm from './TransactionForm';
 
-export { Transactions };
+export { Transactions, TransactionForm };

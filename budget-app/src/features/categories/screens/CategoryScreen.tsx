@@ -7,9 +7,8 @@ import { Category } from '../hoc';
 const CategoryScreen: FC<StackScreenProps<MainStackParamList, CategoryRoute>> = (props) => {
   const { route } = props;
   const { params } = route;
-  const { id } = params;
 
-  return <Category id={id} />;
+  return <Category id={params.id} />;
 };
 
 export default CategoryScreen;

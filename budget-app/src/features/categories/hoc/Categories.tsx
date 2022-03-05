@@ -3,9 +3,9 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackParamList } from '@navigation/MainNavigator';
 import { categoryRoute } from '@navigation/types';
-import { sizes } from '@styles/constants';
-import { StyleSheet } from 'react-native';
-import { CategoriesList } from '../components';
+import { colors, paddings } from '@styles/constants';
+import { StyleSheet, View } from 'react-native';
+import { CategoriesGrid } from '../components';
 import { useCategories } from '../hooks';
 import { Category } from '../types';
 
@@ -18,20 +18,23 @@ const Categories: FC = () => {
   };
 
   return (
-    <CategoriesList
-      data={categories}
-      onRefresh={refetch}
-      contentStyle={styles.content}
-      isRefreshing={isLoading || isRefetching}
-      onItemPress={handleItemPress}
-    />
+    <View style={styles.container}>
+      <CategoriesGrid
+        iconSize="m"
+        data={categories}
+        onRefresh={refetch}
+        contentStyle={paddings.xl}
+        isRefreshing={isLoading || isRefetching}
+        onItemPress={handleItemPress}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  content: {
-    paddingHorizontal: sizes.xl,
-    paddingBottom: sizes.l,
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
   },
 });
 

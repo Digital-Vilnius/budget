@@ -1,28 +1,15 @@
 import React, { FC } from 'react';
 import { useRecentCategories } from '@features/categories/hooks';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { MainStackParamList } from '@navigation/MainNavigator';
-import {
-  categoriesRoute,
-  categoryFormRoute,
-  categoryRoute,
-  transactionFormRoute,
-  transactionRoute,
-  transactionsRoute,
-} from '@navigation/types';
 import { useRecentTransactions } from '@features/transactions/hooks';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { TabsParamList } from '@navigation/TabsNavigator';
 import { useAccount } from '@features/accounts/hooks';
 import { useAppSelector } from '@core/store';
-import { Dashboard as ControlledDashboard } from '../components';
+import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { ListSeparator } from '@components';
+import { borderRadius, colors, paddings, sizes } from '@styles/constants';
+import { Categories, QuickActions, RecentTransactions, Statistics } from '../components';
 
 const Dashboard: FC = () => {
-  const stackNavigation = useNavigation<StackNavigationProp<MainStackParamList>>();
-  const tabsNavigation = useNavigation<BottomTabNavigationProp<TabsParamList>>();
   const selectedAccount = useAppSelector((state) => state.accounts.selectedAccount);
-
   if (!selectedAccount) throw new Error('Account is not set');
 
   const {
@@ -42,7 +29,6 @@ const Dashboard: FC = () => {
   } = useRecentTransactions();
 
   const {
-    account,
     refetch: refetchAccount,
     isRefetching: isAccountRefetching,
     isLoading: isAccountLoading,
@@ -55,32 +41,52 @@ const Dashboard: FC = () => {
   };
 
   return (
-    <ControlledDashboard
-      refresh={handleRefetch}
-      isRefreshing={
-        isCategoriesRefetching ||
-        isTransactionsRefetching ||
-        isAccountRefetching ||
-        isCategoriesLoading ||
-        isTransactionsLoading ||
-        isAccountLoading
+    <ScrollView
+      refreshControl={
+        <RefreshControl
+          refreshing={
+            isCategoriesRefetching ||
+            isTransactionsRefetching ||
+            isAccountRefetching ||
+            isCategoriesLoading ||
+            isTransactionsLoading ||
+            isAccountLoading
+          }
+          onRefresh={handleRefetch}
+        />
       }
-      transactions={transactions}
-      isShowAllTransactionsVisible={transactionsCount > transactions.length}
-      onShowAllTransactionsPress={() => tabsNavigation.navigate(transactionsRoute)}
-      onTransactionPress={(item) => stackNavigation.navigate(transactionRoute, { id: item.id })}
-      categories={categories}
-      isShowAllCategoriesVisible={categoriesCount > categories.length}
-      onShowAllCategoriesPress={() => tabsNavigation.navigate(categoriesRoute)}
-      onCategoryPress={(item) => stackNavigation.navigate(categoryRoute, { id: item.id })}
-      onAddCategoryPress={() => stackNavigation.navigate(categoryFormRoute)}
-      onAddTransactionPress={() => stackNavigation.navigate(transactionFormRoute)}
-      onInviteUserPress={console.log}
-      incomes={account?.incomes ?? selectedAccount.incomes}
-      balance={account?.balance ?? selectedAccount.balance}
-      expenses={account?.expenses ?? selectedAccount.expenses}
-    />
+    >
+      <Statistics
+        style={styles.chartContainer}
+        incomes={selectedAccount.incomes}
+        balance={selectedAccount.balance}
+        expenses={selectedAccount.expenses}
+      />
+      <QuickActions style={paddings.l} />
+      <View style={styles.content}>
+        <Categories style={paddings.xl} categoriesCount={categoriesCount} categories={categories} />
+        <ListSeparator />
+        <RecentTransactions
+          style={paddings.xl}
+          transactionsCount={transactionsCount}
+          transactions={transactions}
+        />
+      </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  content: {
+    backgroundColor: colors.white,
+    borderTopRightRadius: borderRadius.xxl,
+    borderTopLeftRadius: borderRadius.xxl,
+  },
+  chartContainer: {
+    paddingTop: sizes.xxl,
+    paddingHorizontal: sizes.xl,
+    paddingBottom: sizes.l,
+  },
+});
 
 export default Dashboard;

@@ -1,7 +1,7 @@
 export const colors = {
   black: '#000000',
   white: '#FFFFFF',
-  background: '#FFFFFF', // '#F4F5F7',
+  background: '#F4F5F7',
   primary: '#00875A',
   success: '#00875A',
   danger: '#DE350B',
@@ -73,6 +73,26 @@ export const paddings = {
   xxl: { padding: sizes.xxl },
 };
 
+export const horizontalPaddings = {
+  xxs: { paddingHorizontal: sizes.xxs },
+  xs: { paddingHorizontal: sizes.xs },
+  s: { paddingHorizontal: sizes.s },
+  m: { paddingHorizontal: sizes.m },
+  l: { paddingHorizontal: sizes.l },
+  xl: { paddingHorizontal: sizes.xl },
+  xxl: { paddingHorizontal: sizes.xxl },
+};
+
+export const verticalPaddings = {
+  xxs: { paddingVertical: sizes.xxs },
+  xs: { paddingVertical: sizes.xs },
+  s: { paddingVertical: sizes.s },
+  m: { paddingVertical: sizes.m },
+  l: { paddingVertical: sizes.l },
+  xl: { paddingVertical: sizes.xl },
+  xxl: { paddingVertical: sizes.xxl },
+};
+
 export const rightPaddings = {
   xxs: { paddingRight: sizes.xxs },
   xs: { paddingRight: sizes.xs },
@@ -111,6 +131,16 @@ export const rightSpacings = {
   l: { marginRight: sizes.l },
   xl: { marginRight: sizes.xl },
   xxl: { marginRight: sizes.xxl },
+};
+
+export const leftSpacings = {
+  xxs: { marginLeft: sizes.xxs },
+  xs: { marginLeft: sizes.xs },
+  s: { marginLeft: sizes.s },
+  m: { marginLeft: sizes.m },
+  l: { marginLeft: sizes.l },
+  xl: { marginLeft: sizes.xl },
+  xxl: { marginLeft: sizes.xxl },
 };
 
 export const fonts = {

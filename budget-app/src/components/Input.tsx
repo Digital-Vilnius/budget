@@ -28,16 +28,18 @@ type Props = Omit<TextInputProps, 'editable' | 'onChange' | 'placeholderTextColo
 };
 
 const Input: FC<Props> = (props) => {
-  const { onChange, label, disabled, error, containerStyle, style, ...rest } = props;
+  const { onChange, label, disabled, error, containerStyle, style, multiline, ...rest } = props;
+  const textareaStyle = multiline ? styles.textarea : undefined;
 
   return (
     <View style={[styles.container, containerStyle]}>
       {!!label && <Text style={[styles.label, bottomSpacings.s]}>{label}</Text>}
       <TextInput
-        style={[styles.input, style]}
+        style={[styles.input, textareaStyle, style]}
         onChangeText={(text) => onChange(text)}
         placeholderTextColor={hexToRgba(colors.text.primary, 0.4)}
         editable={!disabled}
+        multiline={multiline}
         {...rest}
       />
       {!!error && <Text style={styles.error}>{error}</Text>}
@@ -67,6 +69,10 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.s,
     lineHeight: lineHeights.l,
     color: colors.text.primary,
+  },
+  textarea: {
+    height: 88,
+    textAlignVertical: 'top',
   },
   error: {
     color: colors.danger,

@@ -4,8 +4,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackParamList } from '@navigation/MainNavigator';
 import { transactionRoute } from '@navigation/types';
 import { Transaction } from '@features/transactions/types';
-import { StyleSheet } from 'react-native';
-import { sizes } from '@styles/constants';
+import { StyleSheet, View } from 'react-native';
+import { colors, sizes } from '@styles/constants';
 import { TransactionsSections as ControlledTransactions } from '../components';
 import { useTransactions } from '../hooks';
 
@@ -18,18 +18,24 @@ const Transactions: FC = () => {
   };
 
   return (
-    <ControlledTransactions
-      data={transactions}
-      style={styles.content}
-      onRefresh={refetch}
-      isRefreshing={isLoading || isRefetching}
-      onItemPress={handleItemPress}
-      onEndReached={loadMore}
-    />
+    <View style={styles.container}>
+      <ControlledTransactions
+        data={transactions}
+        style={styles.content}
+        onRefresh={refetch}
+        isRefreshing={isLoading || isRefetching}
+        onItemPress={handleItemPress}
+        onEndReached={loadMore}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
+  },
   content: {
     paddingHorizontal: sizes.xl,
     paddingBottom: sizes.l,
